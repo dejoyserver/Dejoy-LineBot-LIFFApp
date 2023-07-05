@@ -25,19 +25,20 @@ function App() {
                 pictureUrl: profile.pictureUrl,
                 statusMessage: profile.statusMessage
             });
-            axios({
-              method: 'get',
-              url: 'https://3f72-163-13-133-72.ngrok-free.app/dejoy/linebot/getUserToken',
-              params: {
-                userId: profile.userId
-              }
-            }).then((response) => {
-              console.log(response);
-              setMemberToken(JSON.stringify(response.data));
-            }).catch((err) => {
-              console.log(err);
-            });
         });
+    }).then(() => {
+      axios({
+        method: 'get',
+        url: 'https://3f72-163-13-133-72.ngrok-free.app/dejoy/linebot/getUserToken',
+        params: {
+          userId: profiles.userId
+        }
+      }).then((response) => {
+        console.log(response);
+        setMemberToken(JSON.stringify(response.data));
+      }).catch((err) => {
+        console.log(err);
+      });
     }).catch((err) => {
         console.log(err);
     });
