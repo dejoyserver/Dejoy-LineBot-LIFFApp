@@ -27,7 +27,14 @@ function App() {
             });
         });
     }).then(() => {
-      axios.get(`https://3f72-163-13-133-72.ngrok-free.app/dejoy/linebot/getUserToken?userId=${profiles.userId}`).then((response) => {
+      axios({
+        method: 'get',
+        url: 'https://3f72-163-13-133-72.ngrok-free.app/dejoy/linebot/getUserToken',
+        params: {
+          userId: profiles.userId
+        },
+        headers: {'Access-Control-Allow-Origin': '*'}
+      }).then((response) => {
         console.log(response);
         setMemberToken(JSON.stringify(response.data));
       }).catch((err) => {
