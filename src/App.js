@@ -50,6 +50,7 @@ function App() {
       <p>pictureUrl: {profiles.pictureUrl}</p>
       <p>statusMessage: {profiles.statusMessage}</p>
       <hr/>
+      <p>{`https://3f72-163-13-133-72.ngrok-free.app/dejoy/linebot/getMember?token=${memberToken}`}</p>
       <QRCodeSVG value={`https://3f72-163-13-133-72.ngrok-free.app/dejoy/linebot/getMember?token=${memberToken}`}/>
     </div>
   );
