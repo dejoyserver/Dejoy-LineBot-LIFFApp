@@ -25,7 +25,7 @@ function LineAccountProfiles() {
         }).catch((err) => {
             console.log(err);
         });
-    }, profiles);
+    }, []);
 
     return(
         <div>
