@@ -1,5 +1,6 @@
 import './App.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import liff from '@line/liff';
 import { QRCodeSVG } from 'qrcode.react';
 
 function App() {
