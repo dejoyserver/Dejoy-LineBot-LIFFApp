@@ -32,6 +32,7 @@ function App() {
                 userId: profile.userId
               }
             }).then((response) => {
+              console.log(response);
               setMemberToken(JSON.stringify(response.data));
             }).catch((err) => {
               console.log(err);
