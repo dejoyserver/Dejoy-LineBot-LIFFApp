@@ -25,15 +25,14 @@ function LineAccountProfiles() {
         }).catch((err) => {
             console.log(err);
         });
-    }, []);
+    }, profiles);
 
     return(
         <div>
-            <h1>hello world</h1>
-            <p>{profiles.userId}</p>
-            <p>{profiles.displayName}</p>
-            <p>{profiles.pictureUrl}</p>
-            <p>{profiles.statusMessage}</p>
+            <p>userId: {profiles.userId}</p>
+            <p>displayName: {profiles.displayName}</p>
+            <p>pictureUrl: {profiles.pictureUrl}</p>
+            <p>statusMessage: {profiles.statusMessage}</p>
         </div>
     );
 }
