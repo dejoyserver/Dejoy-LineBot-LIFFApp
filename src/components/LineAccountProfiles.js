@@ -14,7 +14,7 @@ function LineAccountProfiles() {
             liffId: '2000018050-d5JXzaMR',
             withLoginOnExternalBrowser: true,
         }).then(() => {
-            liff.getProfile.then((profile) => {
+            liff.getProfile().then((profile) => {
                 setProfiles({
                     userId: profile.userId,
                     displayName: profile.displayName,
