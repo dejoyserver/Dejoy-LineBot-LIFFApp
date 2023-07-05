@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import liff from '@line/liff';
 import { QRCodeSVG } from 'qrcode.react';
+import axios from 'axios';
 
 function App() {
   const [profiles, setProfiles] = useState({
@@ -10,6 +11,7 @@ function App() {
     pictureUrl: "",
     statusMessage: ""
   });
+  const [memberToken, setMemberToken] = useState("");
 
   useEffect(() => {
     liff.init({
@@ -22,6 +24,17 @@ function App() {
                 displayName: profile.displayName,
                 pictureUrl: profile.pictureUrl,
                 statusMessage: profile.statusMessage
+            });
+            axios({
+              method: 'get',
+              url: 'https://3f72-163-13-133-72.ngrok-free.app/dejoy/linebot/getUserToken',
+              params: {
+                userId: profile.userId
+              }
+            }).then((response) => {
+              setMemberToken(JSON.stringify(response.data));
+            }).catch((err) => {
+              console.log(err);
             });
         });
     }).catch((err) => {
@@ -37,7 +50,7 @@ function App() {
       <p>pictureUrl: {profiles.pictureUrl}</p>
       <p>statusMessage: {profiles.statusMessage}</p>
       <hr/>
-      <QRCodeSVG value={`https://3f72-163-13-133-72.ngrok-free.app/dejoy/linebot/getMember?userId=${profiles.userId}`}/>
+      <QRCodeSVG value={`https://3f72-163-13-133-72.ngrok-free.app/dejoy/linebot/getMember?token=${memberToken}`}/>
     </div>
   );
 }
